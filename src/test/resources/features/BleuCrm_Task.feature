@@ -24,13 +24,14 @@ Scenario:  HR User should be able to create a "High priority" tasks with the man
    And user assigns second person
    And user click the send button
    Then user's task is created on the homepage
-
+@wip
 Scenario: When task(s) is(are) created, they can be seen on the count on the homepage under "MY TASKS" table.
   When user Task button clicks
   And user types task header
   And user click the send button
   And user's task is created on the homepage
   Then user sees task under MY TASKS table.
+
 
 Scenario: Checklist should be able to be added while creating a task.
   When user Task button clicks

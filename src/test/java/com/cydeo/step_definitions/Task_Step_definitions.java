@@ -6,6 +6,7 @@ import com.cydeo.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -15,8 +16,14 @@ public class Task_Step_definitions extends TaskPage {
 
     TaskPage taskPage=new TaskPage();
 
+    /**
+     *
+     */
+    int tasksCounterBefore;
+
     @When("user Task button clicks")
     public void user_task_button_clicks() {
+        tasksCounterBefore = Integer.parseInt(Driver.getDriver().findElement(By.xpath("//span[.='Ongoing']/following-sibling::span/span")).getText());
         taskPage.task_btn.click();
     }
     @When("user clicks high priority box")
@@ -61,12 +68,13 @@ public class Task_Step_definitions extends TaskPage {
     public void user_sees_task_under_my_tasks_table() {
     //   System.out.println("taskPage.ongoingTask.isDisplayed() = " + taskPage.ongoingTask.isDisplayed());
       //  System.out.println("taskPage.ongoingTask.getText() = " + taskPage.ongoingTask.getText());
-          String countTask=taskPage.CountTaskActual.getText();
-       String actual=taskPage.CountTaskActual.getText();
-       Assert.assertEquals(countTask, actual);
-        System.out.println("taskPage.CountTaskActual.getText() = " + taskPage.CountTaskActual.getText());
+    //      String countTask=taskPage.CountTaskActual.getText();
+     //  String actual=taskPage.CountTaskActual.getText();
+     //  Assert.assertEquals(countTask, actual);
+      //  System.out.println("taskPage.CountTaskActual.getText() = " + taskPage.CountTaskActual.getText());
+        int tasksCounterActual = Integer.parseInt(Driver.getDriver().findElement(By.xpath("//span[.='Ongoing']/following-sibling::span/span")).getText());
 
-
+        Assert.assertEquals(tasksCounterBefore +1, tasksCounterActual);
     }
 
     @When("user clicks the checklist")

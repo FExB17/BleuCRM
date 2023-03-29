@@ -4,8 +4,6 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
-public class cukesRunner {
-
 
     @RunWith(Cucumber.class)
     @CucumberOptions(
@@ -17,11 +15,11 @@ public class cukesRunner {
             },
             features="src/test/resources/features",
             glue="com/cydeo/step_definitions",
-            dryRun = true,
-            tags="@smoke",
-            publish = true
+            dryRun = false,
+            tags="@wip",
+            publish = false
     )
     public class CukesRunner {
     }
 
-}
+
