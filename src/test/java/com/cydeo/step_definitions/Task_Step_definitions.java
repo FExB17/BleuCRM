@@ -17,12 +17,13 @@ public class Task_Step_definitions extends TaskPage {
     TaskPage taskPage=new TaskPage();
 
     /**
-     *
      */
     int tasksCounterBefore;
 
     @When("user Task button clicks")
     public void user_task_button_clicks() {
+        /**
+         */
         tasksCounterBefore = Integer.parseInt(Driver.getDriver().findElement(By.xpath("//span[.='Ongoing']/following-sibling::span/span")).getText());
         taskPage.task_btn.click();
     }
@@ -72,8 +73,9 @@ public class Task_Step_definitions extends TaskPage {
      //  String actual=taskPage.CountTaskActual.getText();
      //  Assert.assertEquals(countTask, actual);
       //  System.out.println("taskPage.CountTaskActual.getText() = " + taskPage.CountTaskActual.getText());
+        /**
+         */
         int tasksCounterActual = Integer.parseInt(Driver.getDriver().findElement(By.xpath("//span[.='Ongoing']/following-sibling::span/span")).getText());
-
         Assert.assertEquals(tasksCounterBefore +1, tasksCounterActual);
     }
 
